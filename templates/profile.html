@@ -1,0 +1,24 @@
+{% extends 'base_without_footer.html' %}
+
+{% block title %}
+Личный кабинет
+{% endblock %}
+
+{% block body %}
+{% if current_user.is_authenticated and profile_id == cur_user_id %}
+<h2>Личный кабинет</h2><p></p>
+<div class="btn-group">
+      <a style="border-radius: 10px; text-align: center; width: 300px;" class="fff btn btn-secondary btn-lg btn-block" href="/edit_account/{{ cur_user_id }}/">Изменить данные</a>
+      <a style="margin-left: 5px; border-radius: 10px; text-align: center; width: 300px;" class="fff btn btn-secondary btn-lg btn-block" href="/logout">Выйти из аккаунта</a>
+</div>
+{% endif %}
+<p></p><h1>Общая информация</h1>
+<div style="width: 600px;" class="alert alert-dark" role="alert"><b>Ник:</b> {{ name }}<br>
+      {% if current_user.is_authenticated and profile_id == cur_user_id %}<b>E-mail:</b> {{ mail }}<br>{% endif %}
+      <b>Аккаунт создан:</b> {{ created_date }}
+</div>
+{% if current_user.is_authenticated and profile_id == cur_user_id %}
+    <a onclick="return confirm('Are you sure you want to delete?')" style="width: 200px; margin-left: 0.5px;" class="xx btn btn-danger" href="/delete_account/{{ cur_user_id }}/">Удалить аккаунт</a>
+{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Основная страница
+{% endblock %}
+
+{% block body %}
+<main>
+  <div class="container">
+    <div class="card-deck mb-3 text-center row row-cols-1 row-cols-md-3 mb-3 text-center">
+    {% for elem in data %}
+      <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <h4 class="my-0 fw-normal">{{ elem.name }}</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{ elem.price }}<small class="text-muted fw-light"> руб.</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <img src="{{ elem.pic_url }}" alt="Image" width="150" height="150">
+            </ul>
+            <a href="/purchase/{{ elem.id }}/" class="w-100 btn rgbbtn btn-lg btn-block">Подробнее</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  </main>
+{% endblock %}

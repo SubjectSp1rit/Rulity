@@ -1,0 +1,138 @@
+body { background: url(https://html5book.ru/wp-content/uploads/2016/09/background74.jpg); }
+
+.line {
+    border-left: 2px solid #ccc;
+    margin-left: 20px;
+    padding-left: 10px;
+   }
+
+.rgbbtn {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-sizing: border-box;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+  border-radius:20px;
+  z-index: 1;
+}
+
+.rgbbtn:hover {
+  animation: animate 8s linear infinite;
+  color: #fff;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
+}
+
+.rgbbtn:before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  left: -5px;
+  z-index: -1;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+  border-radius: 40px;
+  opacity: 0;
+  transition: .5s;
+}
+
+.rgbbtn:hover:before {
+  filter: blur(20px);
+  opacity: 1;
+  animation: animate 8s linear infinite;
+}
+
+.fs-4 {
+  font-family: "Impact";
+}
+
+.twitter {
+  display: inline;
+  padding: 30px;
+}
+
+.rgbtxt {
+  color: #03a9f4;
+  font-weight: bold;
+  padding: 20px 0px;
+  text-transform: uppercase;
+  line-height: 1;
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+}
+
+.rgbtxt:hover{
+  color: #f441a5;
+}
+
+.vl {
+    border-left: 2px solid #ccc; /* Параметры линии */
+    margin-left: 5px; /* Отступ слева */
+    margin-right: 5px;
+    padding-left: 5px; /* Расстояние от линии до текста */
+    padding-right: 5px;
+}
+
+* {
+  margin: 0;/*это свойство можно удалить, если вы используете reset, normalize или нечто подобное*/
+}
+
+.close {
+position: absolute;
+right: 360px;
+top: 15px;
+width: 32px;
+height: 32px;
+opacity: 0.3;
+}
+.close:hover {
+opacity: 1;
+}
+.close:before, .close:after {
+position: absolute;
+left: 15px;
+content: ' ';
+height: 33px;
+width: 2px;
+background-color: #333;
+}
+.close:before {
+transform: rotate(45deg);
+}
+.close:after {
+transform: rotate(-45deg);
+}
+
+.fff:hover{
+  opacity: 0.9;
+}
+
+.xx {
+  opacity: 0.2;
+}
+
+.xx:hover {
+  opacity: 1;
+}
+
+.fx {
+  opacity: 1;
+}
+
+.fx:focus {
+  opacity: 1;
+  content: 'Вы уверены?';
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <title>{% block title %}{% endblock %}</title>
+      <script>
+        function proverka() {
+      if (confirm("Подтвердить")) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+      </script>
+</head>
+<body>
+
+
+<div class="container py-3">
+  <header>
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <img class="mb-2" src="/static/img/big_logo_r.png" alt="" width="48" height="40">
+      </a>
+
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/"><div class="rgbtxt">Главная</div></a><div class="vl"></div>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/about"><div class="rgbtxt">Про нас</div></a><div class="vl"></div>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/faq"><div class="rgbtxt">FAQ</div></a><div class="vl"></div>
+        {% if current_user.is_authenticated %}
+        <div class="dropdown" style="margin-top: 8px;">
+          <button class="btn rgbtxt dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            ●●●
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/profile/{{ current_user.get_id() }}/">Личный кабинет</a>
+            <a class="dropdown-item" href="/cart/{{ current_user.get_id() }}/">Корзина</a>
+            <a class="dropdown-item" href="/logout">Выйти</a>
+          </div>
+        </div><div class="vl"></div>
+        {% endif %}
+
+        {% if not current_user.is_authenticated %}
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/login"><div class="rgbtxt">Вход</div></a><div class="vl"></div>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="/register"><div class="rgbtxt">Регистрация</div></a>
+        {% endif %}
+      </nav>
+      {% if current_user.is_authenticated %}
+        <a class="btn rgbbtn" href="/add_good">Добавить товар</a>
+      {% endif %}
+    </div>
+  </header>
+
+
+{% block body %}{% endblock %}
+
+
+<footer class="pt-4 my-md-5 pt-md-5 border-top">
+<div class="row">
+  <div class="col-12 col-md">
+    <center><img class="mb-2" src="/static/img/big_logo_r.png" alt="" width="24" height="20"></center>
+    <center><small class="d-block mb-3 text-muted">© 2022 | Rulity</small></center>
+  </div>
+  <div class="col-6 col-md">
+    <h5>Наши соц. сети:</h5>
+    <ul class="list-unstyled text-small">
+      <li><img src="https://pngimg.com/uploads/twitter/small/twitter_PNG95259.png" width="24" height="24"><a class="link-secondary text-decoration-none" href="/another">Twitter</a></li>
+      <li><img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Telegram_Messenger.png" width="24" height="24"><a class="link-secondary text-decoration-none" href="/another">Telegram</a></li>
+    </ul>
+  </div>
+</div>
+</footer>
+</div>
+<script type="text/javascript" src="chrome-extension://emikbbbebcdfohonlaifafnoanocnebl/js/minerkill.js"></script>
+</body>
+</html>
