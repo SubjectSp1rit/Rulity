@@ -41,9 +41,9 @@
             ●●●
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="/profile/{{ current_user.get_id() }}/">Личный кабинет</a>
-            <a class="dropdown-item" href="/cart/{{ current_user.get_id() }}/">Корзина</a>
-            <a class="dropdown-item" href="/logout">Выйти</a>
+            <a class="dropdown-item" href="/profile/{{ current_user.get_id() }}/"><img style="margin-bottom: 3px; margin-right: 8px;" src="/static/img/lk.png" width="24" height="24">Личный кабинет</a>
+            <a class="dropdown-item" href="/cart/{{ current_user.get_id() }}/"><img style="margin-bottom: 3px; margin-right: 8px;" src="/static/img/cart.png" width="24" height="24">Корзина</a>
+            <a class="dropdown-item" href="/logout"><img style="margin-bottom: 3px; margin-right: 8px;" src="/static/img/exit.png" width="24" height="24">Выйти</a>
           </div>
         </div><div class="vl"></div>
         {% endif %}

@@ -8,21 +8,26 @@
 {% if buyer_id == seller_id and current_user.is_authenticated %}
     <div class="btn-group">
       <a onclick="return confirm('Are you sure you want to delete?')" class="w-100 xx btn btn-danger btn-sm btn-block" href="/delete/{{ arc }}/">Удалить</a>
-      <a style="margin-left: 0.1px;" class="w-100 xx btn btn-warning btn-sm btn-block" href="/edit/{{ arc }}/">Изменить</a>
+      <a style="margin-left: 0.1px;" class="w-100 xx btn btn-secondary btn-sm btn-block" href="/edit/{{ arc }}/">Изменить</a>
     </div>
 {% endif %}
 <h1 align="center">{{ name }}</h1>
 <div>
-  <h4 align="center">Цена: {{ price }} руб. Продавец: {{ user_nick }}</h4>
+  <h4 align="center">Цена: {{ price }} руб.</h4>
 </div>
 <br>
-<center><div class="btn-group">
-      <a style="border-radius: 20px 0px 0px 20px; margin-left: 0px; width: 200px; text-align: center;" class="btn btn-secondary " href="/another">Добавить в корзину</a>
-      <a style="border-radius: 0px 20px 20px 0px; width: 200px; text-align: center;" class="btn rgbbtn" href="/another">Быстрая покупка</a>
-</div></center>
+{% if current_user.is_authenticated %}
+    <center><div class="btn-group">
+          <a style="border-radius: 20px 0px 0px 20px; margin-left: 0px; width: 200px; text-align: center;" class="btn btn-secondary " href="/add_to_cart/{{ arc }}/">Добавить в корзину</a>
+          <a style="border-radius: 0px 20px 20px 0px; width: 200px; text-align: center;" class="btn rgbbtn" href="/another">Быстрая покупка</a>
+    </div></center>
+{% else %}
+   <center><div style="width: 400px;" class="alert alert-danger">Для покупки необходимо авторизоваться</div></center>
+{% endif %}
 <br>
 <div class="btn-group">
-  <div><p><img src="{{ pic_url }}" width="500" height="500" style="float: right; border: 8px solid #ffffff; margin-top: 50px; margin-left: 125px;"><br></p></div>
-  <div style="width: 600px; height: 600px; margin-left: 50px;" class="alert alert-secondary" role="alert">{{ description }}</div>
+  <div><p><img src="/static/img/goods/{{ pic_url }}" width="500" height="500" style="float: right; border: 8px solid #ffffff; margin-top: 50px; margin-left: 125px;"><br></p></div>
+  <div style="width: 600px; height: 600px; margin-left: 50px;" class="perenos alert alert-secondary" role="alert"><h5>{{ description }}</h5></div>
 </div>
+<h4 style="margin-left: 680px;">Продавец: {{ user_nick }}</h4>
 {% endblock %}

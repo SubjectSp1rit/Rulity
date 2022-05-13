@@ -6,7 +6,7 @@
 
 {% block body %}
     <h1 align="center">Добавление товара</h1>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <p>
             {{ form.name.label }}<br>
@@ -44,15 +44,13 @@
                 </div>
             {% endfor %}
         </p>
-        <p>
-            {{ form.pic_url.label }}<br>
-            {{ form.pic_url(class="form-control") }}<br>
-            {% for error in form.pic_url.errors %}
-                <div class="alert alert-danger" role="alert">
-                    {{ error }}
-                </div>
-            {% endfor %}
-        </p>
+        {% if not msg %}
+        <div>
+            <p><input type="file" name="file"></p>
+        </div>
+        {% else %}
+            <p>{{ msg }}</p>
+        {% endif %}
         <p align="center">{{ form.submit(type="submit", class="btn rgbbtn") }}</p>
         <div>{{ message }}</div>
     </form>

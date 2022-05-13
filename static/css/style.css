@@ -1,4 +1,13 @@
-body { background: url(https://html5book.ru/wp-content/uploads/2016/09/background74.jpg); }
+body { background: url(/static/img/background.jpg); }
+
+body {
+    background-image: url(/static/img/background.jpg);
+    background-attachment: fixed;
+}
+
+.dropdown-toggle:after {
+  border: none;
+}
 
 .line {
     border-left: 2px solid #ccc;
@@ -135,4 +144,48 @@ transform: rotate(-45deg);
 .fx:focus {
   opacity: 1;
   content: 'Вы уверены?';
+}
+
+.perenos {
+width:600px;
+word-break:break-all;
+}
+
+.perenos2 {
+width:800px;
+word-break:break-all;
+}
+
+.closeModal {
+	position: absolute;
+	top: 30px;
+	right: 20px;
+	width: 24px;
+	height: 24px;
+	opacity: 0.2;
+	cursor: pointer;
+  transition: opacity ease 0.5s;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.closeModal::before,
+.closeModal::after {
+	content: '';
+	position: absolute;
+	top: 0px;
+	display: block;
+	width: 24px;
+	height: 3px;
+	background: #000;
+}
+
+.closeModal::before {
+	transform: rotate(45deg);
+}
+
+.closeModal::after {
+	transform: rotate(-45deg);
 }

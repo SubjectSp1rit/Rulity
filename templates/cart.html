@@ -1,0 +1,32 @@
+{% extends 'base_without_footer.html' %}
+
+{% block title %}
+Корзина
+{% endblock %}
+
+{% block body %}
+{% if message %}
+    <center><h2>{{ message }}</h2><br>
+    <a class="btn rgbbtn" href="/">Вперёд за покупками!</a></center>
+{% else %}
+    <center><h2>Корзина</h2><br></center>
+    <a class="btn rgbbtn" href="/clear_cart/{{ current_user.get_id() }}/">Очистить корзину</a><p></p>
+    <h4>Общая стоимость: {{ summa }} руб.</h4>
+    <div class="card-deck mb-3 text-center row row-cols-1 row-cols-md-3 mb-3 text-center">
+    {% for elem in sp %}
+        <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-header py-3">
+            <a class="closeModal" href="/delete_from_cart/{{ elem[0] }}/"></a>
+            <h4 class="my-0 fw-normal">{{ elem[1] }}</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">{{ elem[2] }}<small class="text-muted fw-light"> руб.</small></h1>
+            <a href="/purchase/{{ elem[0] }}/" class="w-100 btn rgbbtn btn-lg btn-block">Перейти в магазин</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}
